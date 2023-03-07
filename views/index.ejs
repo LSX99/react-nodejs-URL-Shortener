@@ -12,7 +12,7 @@
 	<body>
 		<div class="container">
 			<h1>URL Shortener</h1>
-			<form action="" method="POST" class="my-4 form-inline">
+			<form action="/shortUrls" method="POST" class="my-4 form-inline">
 				<label for="fullUrl" class="sr-only">Url</label>
 				<input
 					required
@@ -32,16 +32,17 @@
 						<th>Clicks</th>
 					</tr>
 				</thead>
+
 				<tbody>
+					<% shortUrls.forEach (shortUrl => { %>
 					<tr>
 						<td>
-							<a href="https://github.com/LSX99?tab=repositories"
-								>https://github.com/LSX99?tab=repositories</a
-							>
+							<a href="<%=shortUrl.full %>"> <%=shortUrl.full%> </a>
 						</td>
-						<td><a href="/123456">123456 </a></td>
-						<td>10</td>
+						<td><a href="<%= shortUrl.short %>"> <%=shortUrl.short%> </a></td>
+						<td><%= shortUrl.clicks %></td>
 					</tr>
+					<% }) %>
 				</tbody>
 			</table>
 		</div>
